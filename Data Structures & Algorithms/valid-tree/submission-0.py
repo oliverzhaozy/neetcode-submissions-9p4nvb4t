@@ -21,3 +21,4 @@ class Solution:
 
         dfs(0)
         return True if len(visited) == n else False
+        
