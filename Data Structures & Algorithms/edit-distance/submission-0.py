@@ -12,7 +12,8 @@ class Solution:
                 return cache[(i1, i2)]
             
             if word1[i1] == word2[i2]:
-                return dp(i1 + 1, i2 + 1)
+                cache[(i1, i2)] = dp(i1 + 1, i2 + 1)
+                return cache[(i1, i2)]
 
             insert, delete, replace = 0, 0, 0
             # Choice to insert
