@@ -7,12 +7,15 @@ class Solution:
 
             if nums[m] == target:
                 return m
-            if nums[l] <= nums[m]:
+            if nums[l] <= nums[m]: # Left side is sorted
+                # Search left sorted portion
                 if nums[l] <= target <= nums[m]:
                     r = m - 1
                 else:
                     l = m + 1
-            if nums[m] <= nums[r]:
+
+            else: # Right side is sorted 
+                # Search right sorted portion 
                 if nums[m] <= target <= nums[r]:
                     l = m + 1
                 else:
