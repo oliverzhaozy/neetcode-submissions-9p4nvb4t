@@ -1,27 +1,18 @@
 class Solution:
     def subsetXORSum(self, nums: List[int]) -> int:
-        res = 0 
-        subsets = [] 
+        self.res = 0 
 
-        def generateSubsets(i, curSet):
+        def generateSubsets(i, total):
             # Base case
             if i >= len(nums):
-                subsets.append(curSet.copy())
+                self.res += total
                 return
             
             # Choice to include
-            curSet.append(nums[i])
-            generateSubsets(i + 1, curSet)
-            curSet.pop()
+            generateSubsets(i + 1, total ^ nums[i])
 
             # Choice to exclude
-            generateSubsets(i + 1, curSet)
+            generateSubsets(i + 1, total)
 
-        generateSubsets(0, [])
-        for subset in subsets:
-            curXOR = 0
-            for n in subset:
-                curXOR ^= n
-            res += curXOR
-        
-        return res
+        generateSubsets(0, 0)
+        return self.res
