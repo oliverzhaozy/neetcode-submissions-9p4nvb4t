@@ -1,6 +1,5 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        n = len(nums)
         max_num, max_count = nums[0], 0
 
         for num in nums:
